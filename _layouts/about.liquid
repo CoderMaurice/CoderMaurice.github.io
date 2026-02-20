@@ -2,7 +2,28 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
+  <header class="post-header about-hero">
+    {% if page.profile and page.profile.image %}
+      <div class="about-hero-profile">
+        {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+        {% if page.profile.image_circular %}
+          {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+        {% else %}
+          {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+        {% endif %}
+        {% capture sizes %}(min-width: {{ site.max_width }}) 240px, 60vw{% endcapture %}
+        {%
+          include figure.liquid
+          loading="eager"
+          path=profile_image_path
+          class=profile_image_class
+          sizes=sizes
+          alt=page.profile.image
+          cache_bust=true
+        %}
+      </div>
+    {% endif %}
+
     <h1 class="post-title">
       {% if site.title == 'blank' %}
         <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
@@ -11,33 +32,82 @@ layout: default
         {{ site.title }}
       {% endif %}
     </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
 
-  <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+    {% if page.social %}
+      <div class="social about-hero-social">
+        <div class="contact-icons">
+          {% if page.contact_modal and page.contact_modal.enabled != false %}
+            <a
+              class="contact-trigger"
+              role="button"
+              data-toggle="modal"
+              href="#contactInfoModal"
+              aria-label="Open contact information"
+            >
+              <i class="fa-solid fa-comment-dots"></i>
+            </a>
           {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+          {% social_links %}
+        </div>
       </div>
     {% endif %}
+  </header>
 
+  {% if page.contact_modal and page.contact_modal.enabled != false %}
+    <div class="modal fade contact-info-modal" id="contactInfoModal" tabindex="-1" role="dialog" aria-labelledby="contactInfoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <h5 class="sr-only" id="contactInfoModalLabel">{{ page.contact_modal.title | default: 'Contact' }}</h5>
+          <div class="contact-modal-topbar">
+            {% if page.contact_modal.intro %}
+              <p class="contact-modal-intro">{{ page.contact_modal.intro }}</p>
+            {% endif %}
+            <button type="button" class="close contact-modal-close" data-dismiss="modal" aria-label="Close">
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            {% if page.contact_modal.items %}
+              <ul class="list-unstyled contact-modal-list mb-0">
+                {% for item in page.contact_modal.items %}
+                  {% assign label_lc = item.label | downcase %}
+                  <li class="contact-modal-item">
+                    <span class="contact-modal-item-icon" aria-hidden="true">
+                      {% if label_lc contains 'email' %}
+                        <i class="fa-regular fa-envelope"></i>
+                      {% elsif label_lc contains 'wechat' %}
+                        <i class="fa-brands fa-weixin"></i>
+                      {% elsif label_lc contains 'github' %}
+                        <i class="fa-brands fa-github"></i>
+                      {% elsif label_lc contains 'scholar' %}
+                        <i class="ai ai-google-scholar"></i>
+                      {% elsif label_lc contains 'linkedin' %}
+                        <i class="fa-brands fa-linkedin"></i>
+                      {% else %}
+                        <i class="fa-solid fa-link"></i>
+                      {% endif %}
+                    </span>
+                    <div class="contact-modal-item-body">
+                      <span class="contact-modal-item-label">{{ item.label }}</span>
+                      {% if label_lc contains 'email' %}
+                        <span class="contact-modal-item-value">{{ item.value }}</span>
+                      {% elsif item.href %}
+                        <a class="contact-modal-item-value" href="{{ item.href }}" target="_blank" rel="noopener noreferrer">{{ item.value }}</a>
+                      {% else %}
+                        <span class="contact-modal-item-value">{{ item.value }}</span>
+                      {% endif %}
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <article>
     <div class="clearfix">{{ content }}</div>
 
     <!-- News -->
@@ -62,15 +132,6 @@ layout: default
         <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
       </h2>
       {% include selected_papers.liquid %}
-    {% endif %}
-
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% social_links %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}

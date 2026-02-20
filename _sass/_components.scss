@@ -90,6 +90,35 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// About hero
+
+.about-hero {
+  text-align: center;
+}
+
+.about-hero-profile {
+  margin: 0 auto 1.25rem;
+  max-width: 240px;
+}
+
+.about-hero-profile figure {
+  margin: 0;
+}
+
+.about-hero-profile img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.about-hero-social {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-hero-social .contact-icons {
+  font-size: 0.75rem;
+}
+
 // CV
 
 .cv {
@@ -196,7 +225,7 @@ ul.task-list input[type="checkbox"] {
       }
 
       i::before {
-        color: var(--global-text-color);
+        color: #000;
         transition-property: all 0.2s ease-in-out;
       }
 
@@ -204,7 +233,7 @@ ul.task-list input[type="checkbox"] {
         text-decoration: none;
 
         i::before {
-          color: var(--global-theme-color);
+          color: #000;
         }
       }
     }
@@ -212,6 +241,362 @@ ul.task-list input[type="checkbox"] {
 
   .contact-note {
     font-size: 0.8rem;
+  }
+}
+
+html[data-theme="dark"] {
+  .social {
+    .contact-icons {
+      a {
+        i::before {
+          color: #fff;
+        }
+
+        &:hover {
+          i::before {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// About hero social overrides
+
+.about-bio-text {
+  font-size: 1.12rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.about-bio-text p {
+  margin-bottom: 1rem;
+}
+
+.about-bio-text .about-bio-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.46rem;
+  margin: 0 0 1.05rem;
+  padding: 0.32rem 0.72rem 0.32rem 0.62rem;
+  border-radius: 0.72rem;
+  border: 1px solid var(--global-theme-color);
+  background: var(--global-code-bg-color);
+  color: var(--global-theme-color);
+  font-size: 0.86rem;
+  letter-spacing: 0.012em;
+  line-height: 1.4;
+  font-weight: 650;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  width: fit-content;
+}
+
+.about-bio-text .about-bio-status::before {
+  content: "";
+  width: 0.52rem;
+  height: 0.52rem;
+  border-radius: 50%;
+  background: var(--global-theme-color);
+  box-shadow: 0 0 0 4px var(--global-code-bg-color);
+  flex: 0 0 auto;
+}
+
+.about-bio-text .bio-accent {
+  display: inline;
+  color: var(--global-theme-color);
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  cursor: default;
+  padding: 0.02em 0.28em;
+  border-radius: 0.28rem;
+  border: 1px solid color-mix(in srgb, var(--global-theme-color) 22%, transparent);
+  background-color: color-mix(in srgb, var(--global-theme-color) 10%, transparent);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.social.about-hero-social {
+  .contact-icons {
+    font-size: 1.6rem;
+
+    a {
+      &.contact-trigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.4rem;
+        height: 1.4rem;
+      }
+
+      i::before {
+        opacity: 0.9;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      img {
+        width: 0.85rem;
+        height: 0.85rem;
+        margin-bottom: 0;
+        opacity: 0.78;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      svg {
+        width: 0.95rem;
+        height: 0.95rem;
+        margin-bottom: 0;
+        opacity: 0.78;
+        transition: opacity 0.2s ease-in-out;
+
+        image {
+          width: 0.95rem;
+          height: 0.95rem;
+        }
+      }
+
+      &:hover {
+        i::before,
+        img,
+        svg {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero-profile {
+    max-width: 180px;
+    margin-bottom: 1rem;
+  }
+
+  .social.about-hero-social {
+    margin-bottom: 1.1rem;
+
+    .contact-icons {
+      font-size: 1.42rem;
+
+      a {
+        &.contact-trigger {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .about-bio-text {
+    font-size: 1.02rem;
+    line-height: 1.72;
+  }
+
+  .about-bio-text .about-bio-status {
+    gap: 0.38rem;
+    font-size: 0.78rem;
+    padding: 0.28rem 0.58rem 0.28rem 0.5rem;
+    border-radius: 0.64rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .about-bio-text .about-bio-status::before {
+    width: 0.42rem;
+    height: 0.42rem;
+    box-shadow: 0 0 0 3px var(--global-code-bg-color);
+  }
+
+  .about-bio-text .bio-accent {
+    padding: 0.01em 0.2em;
+  }
+}
+
+.contact-info-modal {
+  .modal-dialog {
+    max-width: 540px;
+    padding: 0.5rem;
+  }
+
+  .modal-content {
+    background-color: var(--global-card-bg-color);
+    color: var(--global-text-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.9rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+    overflow: hidden;
+  }
+
+  .contact-modal-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    padding: 0.85rem 1.1rem 0.72rem;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  .contact-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 auto;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--global-text-color);
+    opacity: 1;
+    text-shadow: none;
+    transition:
+      color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out,
+      background-color 0.2s ease-in-out;
+  }
+
+  .contact-modal-close i {
+    font-size: 0.95rem;
+  }
+
+  .contact-modal-close:hover,
+  .contact-modal-close:focus {
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+    background-color: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
+    outline: none;
+  }
+
+  .modal-body {
+    padding: 0.95rem 1.1rem 1.2rem;
+  }
+
+  .contact-modal-intro {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    color: var(--global-text-color);
+    font-size: 0.94rem;
+    text-align: left;
+  }
+
+  .contact-modal-list {
+    display: grid;
+    gap: 0.58rem;
+  }
+
+  .contact-modal-item {
+    display: flex;
+    align-items: center;
+    gap: 0.72rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.72rem;
+    padding: 0.62rem 0.72rem;
+    background-color: var(--global-card-bg-color);
+    transition:
+      border-color 0.2s ease-in-out,
+      background-color 0.2s ease-in-out;
+  }
+
+  .contact-modal-item-icon {
+    width: 1.95rem;
+    height: 1.95rem;
+    border-radius: 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    color: var(--global-theme-color);
+    border: 1px solid color-mix(in srgb, var(--global-theme-color) 28%, transparent);
+    background-color: color-mix(in srgb, var(--global-theme-color) 12%, transparent);
+  }
+
+  .contact-modal-item-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  .contact-modal-item-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--global-text-color-light);
+  }
+
+  .contact-modal-item-value {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    color: var(--global-text-color);
+    text-decoration: none;
+  }
+
+  a.contact-modal-item-value:hover {
+    color: var(--global-theme-color);
+    text-decoration: underline;
+  }
+
+  .contact-modal-item:hover {
+    border-color: color-mix(in srgb, var(--global-theme-color) 40%, var(--global-divider-color));
+  }
+
+  @media (max-width: 576px) {
+    .modal-dialog {
+      margin: 0.45rem;
+      padding: 0;
+    }
+
+    .contact-modal-topbar {
+      gap: 0.55rem;
+      padding: 0.72rem 0.82rem 0.62rem;
+    }
+
+    .contact-modal-intro {
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+
+    .contact-modal-close {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+
+    .contact-modal-close i {
+      font-size: 0.88rem;
+    }
+
+    .modal-body {
+      padding: 0.82rem 0.82rem 0.95rem;
+    }
+
+    .contact-modal-list {
+      gap: 0.5rem;
+    }
+
+    .contact-modal-item {
+      gap: 0.55rem;
+      padding: 0.52rem 0.58rem;
+      border-radius: 0.62rem;
+    }
+
+    .contact-modal-item-icon {
+      width: 1.72rem;
+      height: 1.72rem;
+      border-radius: 0.48rem;
+      font-size: 0.88rem;
+    }
+
+    .contact-modal-item-label {
+      font-size: 0.66rem;
+    }
+
+    .contact-modal-item-value {
+      font-size: 0.88rem;
+    }
   }
 }
 
