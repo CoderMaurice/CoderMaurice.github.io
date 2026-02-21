@@ -322,33 +322,45 @@ html[data-theme="dark"] {
     font-size: 1.6rem;
 
     a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.62rem;
+      transition: transform 0.2s ease-in-out;
+
       &.contact-trigger {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.4rem;
-        height: 1.4rem;
+        width: 2rem;
+        height: 2rem;
       }
 
       i::before {
-        opacity: 0.9;
-        transition: opacity 0.2s ease-in-out;
+        opacity: 0.88;
+        display: inline-block;
+        transition:
+          opacity 0.2s ease-in-out,
+          color 0.2s ease-in-out;
       }
 
       img {
         width: 0.85rem;
         height: 0.85rem;
         margin-bottom: 0;
-        opacity: 0.78;
-        transition: opacity 0.2s ease-in-out;
+        opacity: 0.75;
+        transition:
+          opacity 0.2s ease-in-out,
+          transform 0.2s ease-in-out;
       }
 
       svg {
         width: 0.95rem;
         height: 0.95rem;
         margin-bottom: 0;
-        opacity: 0.78;
-        transition: opacity 0.2s ease-in-out;
+        opacity: 0.75;
+        transition:
+          opacity 0.2s ease-in-out,
+          transform 0.2s ease-in-out;
 
         image {
           width: 0.95rem;
@@ -356,12 +368,29 @@ html[data-theme="dark"] {
         }
       }
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-2px);
+        text-decoration: none;
+
         i::before,
         img,
         svg {
           opacity: 1;
         }
+
+        i::before {
+          color: var(--global-theme-color);
+        }
+
+        img,
+        svg {
+          transform: scale(1.03);
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }
@@ -380,9 +409,28 @@ html[data-theme="dark"] {
       font-size: 1.42rem;
 
       a {
+        width: 1.72rem;
+        height: 1.72rem;
+        border-radius: 0.55rem;
+
         &.contact-trigger {
-          width: 1.2rem;
-          height: 1.2rem;
+          width: 1.72rem;
+          height: 1.72rem;
+        }
+
+        img {
+          width: 0.78rem;
+          height: 0.78rem;
+        }
+
+        svg {
+          width: 0.86rem;
+          height: 0.86rem;
+
+          image {
+            width: 0.86rem;
+            height: 0.86rem;
+          }
         }
       }
     }
