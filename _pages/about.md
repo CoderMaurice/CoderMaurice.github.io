@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: 
+subtitle:
 
 profile:
   align: right
@@ -29,18 +29,19 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 
 latest_posts:
-  enabled: true
+  enabled: false
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
 
 <div class="about-bio-text" markdown="1">
 
-<p class="about-bio-status">Work in progress 🛠️ I'm cleaning up the template and adding my content soon. Thanks for stopping by!</p>
-I am currently pursuing an **M.S. in Computer Science** at Northern Arizona University.
+I am an **M.S. student in Computer Science** at Northern Arizona University, with research interests in <span class="bio-accent">large language models</span>, <span class="bio-accent">multimodal AI</span>, and <span class="bio-accent">computer-using agents</span>.
 
-My research interests are <span class="bio-accent">large language models</span>, <span class="bio-accent">multimodal AI</span>, and <span class="bio-accent">LLM-based agents</span>. I am currently focused on measuring and improving multimodal reasoning and generation, as well as assessing and optimizing agent performance in interactive GUI environments. I am also doing research at the intersection of AI agents and blockchain.
+My current work focuses on evaluating and improving agent performance in long-horizon interactive workflows, as well as studying multimodal reasoning and generation. I am especially interested in how LLM-based systems use tools, interact with graphical interfaces, and remain reliable across real-world tasks.
 
-Outside of research, I closely follow financial markets, especially equities and cryptocurrencies.
+Before and alongside graduate study, I have worked on applied machine learning and software systems, including retrieval-augmented generation, tool-calling workflows, model-serving pipelines, and production software for data-intensive applications.
+
+Outside of research, I follow financial markets, especially equities and cryptocurrencies.
 
 </div>

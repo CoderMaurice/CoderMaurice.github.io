@@ -54,7 +54,14 @@ layout: default
   </header>
 
   {% if page.contact_modal and page.contact_modal.enabled != false %}
-    <div class="modal fade contact-info-modal" id="contactInfoModal" tabindex="-1" role="dialog" aria-labelledby="contactInfoModalLabel" aria-hidden="true">
+    <div
+      class="modal fade contact-info-modal"
+      id="contactInfoModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="contactInfoModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <h5 class="sr-only" id="contactInfoModalLabel">{{ page.contact_modal.title | default: 'Contact' }}</h5>
@@ -97,6 +104,17 @@ layout: default
                         <span class="contact-modal-item-value">{{ item.value }}</span>
                       {% endif %}
                     </div>
+                    <button
+                      type="button"
+                      class="contact-modal-copy"
+                      data-copy-label="{{ item.label | escape }}"
+                      data-copy-value="{{ item.value | escape }}"
+                      aria-label="Copy {{ item.label | escape }}"
+                      title="Copy {{ item.label | escape }}"
+                    >
+                      <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                      <span class="sr-only">Copy {{ item.label }}</span>
+                    </button>
                   </li>
                 {% endfor %}
               </ul>

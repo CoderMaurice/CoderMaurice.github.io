@@ -1,12 +1,13 @@
 ---
-layout: cv
+layout: page
 permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
-cv_pdf: /assets/pdf/example_pdf.pdf # you can also use external links here
-cv_format: rendercv # options: rendercv, jsonresume
-description: This is a description of the page. You can modify it in '_pages/cv.md'. You can also change or remove the top pdf download button.
-toc:
-  sidebar: left
+nav_link: /assets/pdf/Jianing_Ma_CV.pdf
+nav_new_tab: true
+redirect: /assets/pdf/Jianing_Ma_CV.pdf
+description: Jianing Ma's CV as a PDF.
 ---
+
+You will be redirected to [the CV PDF]({{ "/assets/pdf/Jianing_Ma_CV.pdf" | relative_url }}).

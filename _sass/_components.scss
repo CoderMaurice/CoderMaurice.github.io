@@ -539,6 +539,7 @@ html[data-theme="dark"] {
     display: flex;
     align-items: center;
     gap: 0.72rem;
+    min-width: 0;
     border: 1px solid var(--global-divider-color);
     border-radius: 0.72rem;
     padding: 0.62rem 0.72rem;
@@ -564,6 +565,7 @@ html[data-theme="dark"] {
   .contact-modal-item-body {
     display: flex;
     flex-direction: column;
+    flex: 1 1 auto;
     gap: 0.1rem;
     min-width: 0;
   }
@@ -586,6 +588,44 @@ html[data-theme="dark"] {
   a.contact-modal-item-value:hover {
     color: var(--global-theme-color);
     text-decoration: underline;
+  }
+
+  .contact-modal-copy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 2.05rem;
+    height: 2.05rem;
+    margin-left: auto;
+    padding: 0;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.52rem;
+    background-color: transparent;
+    color: var(--global-text-color-light);
+    cursor: pointer;
+    transition:
+      color 0.2s ease-in-out,
+      border-color 0.2s ease-in-out,
+      background-color 0.2s ease-in-out;
+  }
+
+  .contact-modal-copy i {
+    font-size: 0.92rem;
+  }
+
+  .contact-modal-copy:hover,
+  .contact-modal-copy:focus-visible {
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+    background-color: color-mix(in srgb, var(--global-theme-color) 8%, transparent);
+    outline: none;
+  }
+
+  .contact-modal-copy.is-copied {
+    color: var(--global-theme-color);
+    border-color: var(--global-theme-color);
+    background-color: color-mix(in srgb, var(--global-theme-color) 12%, transparent);
   }
 
   .contact-modal-item:hover {
@@ -644,6 +684,16 @@ html[data-theme="dark"] {
 
     .contact-modal-item-value {
       font-size: 0.88rem;
+    }
+
+    .contact-modal-copy {
+      width: 1.86rem;
+      height: 1.86rem;
+      border-radius: 0.48rem;
+    }
+
+    .contact-modal-copy i {
+      font-size: 0.84rem;
     }
   }
 }

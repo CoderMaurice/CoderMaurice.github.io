@@ -39,8 +39,19 @@
     li {
       margin-bottom: 1rem;
 
+      > .row {
+        align-items: flex-start;
+      }
+
       .preview {
-        display: inline-block;
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        padding: 0.28rem;
+        object-fit: contain;
+        object-position: center;
+        background-color: var(--global-card-bg-color);
+        border: 1px solid var(--global-divider-color);
       }
 
       .abbr {
@@ -69,9 +80,23 @@
 
       .title {
         font-weight: bolder;
+        line-height: 1.35;
+        margin-bottom: 0.38rem;
+
+        a {
+          color: var(--global-text-color);
+
+          &:hover {
+            color: var(--global-theme-color);
+            text-decoration: underline;
+          }
+        }
       }
 
       .author {
+        line-height: 1.42;
+        margin-bottom: 0.22rem;
+
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -96,6 +121,10 @@
             border-bottom: 1px dashed var(--global-text-color);
           }
         }
+      }
+
+      .periodical {
+        line-height: 1.35;
       }
 
       .links {
